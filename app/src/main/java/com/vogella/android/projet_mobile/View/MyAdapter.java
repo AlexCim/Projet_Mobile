@@ -1,10 +1,13 @@
 package com.vogella.android.projet_mobile.View;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.vogella.android.projet_mobile.Model.Anime;
 import com.vogella.android.projet_mobile.R;
 
@@ -15,7 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     private List<Anime> values;
     private final OnItemClickListener listener;
-
+    private Context context;
+    private List<Anime> listValues;
 
 
     public interface OnItemClickListener {
@@ -30,11 +34,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         public TextView txtHeader;
         public TextView txtFooter;
         public View layout;
+        public ImageView image;
 
         public ViewHolder(View v) {
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
+            image = v.findViewById(R.id.icon);
             //txtFooter = (TextView) v.findViewById(R.id.secondLine);
         }
     }
@@ -42,9 +48,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(List<Anime> myDataset, OnItemClickListener listener) {
+    public MyAdapter(List<Anime> myDataset, Context context, OnItemClickListener listener) {
         values = myDataset;
         this.listener = listener;
+        this.context=context;
     }
 
     // Create new views (invoked by the layout manager)
@@ -76,7 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 listener.onItemClick(currentAnime);
             }
         });
-
+        Picasso.with(context).load(currentAnime.getAttributes().getPosterImage().getTiny()).resize(104,201).into(holder.image);
     }
 
     // Return the size of your dataset (invoked by the layout manager)

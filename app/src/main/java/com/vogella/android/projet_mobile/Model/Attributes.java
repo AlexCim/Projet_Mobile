@@ -4,6 +4,11 @@ public class Attributes {
     private String canonicalTitle;
     private String startDate;
     private String synopsis;
+    private PosterImage posterImage;
+
+    public PosterImage getPosterImage() {
+        return posterImage;
+    }
 
     public String getSynopsis() {
         return synopsis;

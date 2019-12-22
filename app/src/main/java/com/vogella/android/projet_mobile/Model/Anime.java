@@ -1,12 +1,14 @@
 package com.vogella.android.projet_mobile.Model;
 
+import android.media.Image;
+
 public class Anime {
     private String id;
     private String type;
-    private int Image;
+    private String Image;
     private Attributes attributes;
 
-    public Anime(String title, int image) {
+    public Anime(String title, String image) {
         Image = image;
     }
 
@@ -30,11 +32,11 @@ public class Anime {
         this.type = type;
     }
 
-    public int getImage() {
+    public String getImage() {
         return Image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         Image = image;
     }
 }

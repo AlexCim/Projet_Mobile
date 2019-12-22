@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
-        mAdapter = new MyAdapter(input, new MyAdapter.OnItemClickListener() {
+        mAdapter = new MyAdapter(input, this, new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Anime item) {
                 detailsFilms(item);
