@@ -35,19 +35,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(v);
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
-            txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            //txtFooter = (TextView) v.findViewById(R.id.secondLine);
         }
     }
 
-    public void add(int position, Anime item) {
-        values.add(position, item);
-        notifyItemInserted(position);
-    }
 
-    public void remove(int position) {
-        values.remove(position);
-        notifyItemRemoved(position);
-    }
 
     // Provide a suitable constructor (depends on the kind of dataset)
     public MyAdapter(List<Anime> myDataset, OnItemClickListener listener) {
@@ -76,9 +68,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // - replace the contents of the view with that element
         final Anime currentAnime = values.get(position);
         final String title = currentAnime.getAttributes().getCanonicalTitle();
-        final String date = currentAnime.getAttributes().getStartDate();
+        //final String date = currentAnime.getAttributes().getStartDate();
         holder.txtHeader.setText(title);
-        holder.txtFooter.setText(date);
+        //holder.txtFooter.setText(date);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {
                 listener.onItemClick(currentAnime);
