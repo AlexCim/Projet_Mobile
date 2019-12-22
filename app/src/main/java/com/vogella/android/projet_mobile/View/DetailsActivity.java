@@ -1,10 +1,13 @@
 package com.vogella.android.projet_mobile.View;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
+import com.vogella.android.projet_mobile.Controller.RestApiResponse;
 import com.vogella.android.projet_mobile.Model.Anime;
 import com.vogella.android.projet_mobile.R;
 
@@ -26,8 +29,7 @@ public class DetailsActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.titleLine);
         date =(TextView) findViewById(R.id.dateLine);
         synopsis =(TextView) findViewById(R.id.synopsis);
-        //img = (ImageView) findViewById(R.id.anime_img);
-
+        img =(ImageView) findViewById(R.id.anime_img);
 
         //Intent intent = getIntent();
         //int image = intent.getExtras().getInt("Image");
@@ -39,8 +41,7 @@ public class DetailsActivity extends AppCompatActivity {
         title.setText(item.getAttributes().getCanonicalTitle());
         date.setText(item.getAttributes().getStartDate());
         synopsis.setText("Synopsis: " + item.getAttributes().getSynopsis());
-        //img.setImageResource(image);
-
+        Picasso.with(getBaseContext()).load(item.getAttributes().getPosterImage().getLarge()).resize(104,201).into(img);
 
 
     }

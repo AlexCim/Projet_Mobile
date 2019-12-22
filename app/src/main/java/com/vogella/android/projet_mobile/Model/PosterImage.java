@@ -1,9 +1,9 @@
 package com.vogella.android.projet_mobile.Model;
 
 public class PosterImage {
-    private String tiny;
+    private String large;
 
-    public String getTiny() {
-        return tiny;
+    public String getLarge() {
+        return large;
     }
 }

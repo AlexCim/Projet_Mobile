@@ -83,7 +83,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 listener.onItemClick(currentAnime);
             }
         });
-        Picasso.with(context).load(currentAnime.getAttributes().getPosterImage().getTiny()).resize(104,201).into(holder.image);
+        Picasso.with(context).load(currentAnime.getAttributes().getPosterImage().getLarge()).resize(104,201).into(holder.image);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
