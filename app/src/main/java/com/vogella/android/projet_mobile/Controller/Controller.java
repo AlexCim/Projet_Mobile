@@ -18,6 +18,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Controller {
     private MainActivity activity;
+
+    private List<Anime> listAnime1;
+
+    public List<Anime> getListAnime1() {
+        return listAnime1;
+    }
+
     static final String BASE_URL = "https://kitsu.io/api/edge/";
 
     public Controller(MainActivity mainActivity, Context context) {
@@ -44,8 +51,10 @@ public class Controller {
             @Override
             public void onResponse(Call<RestApiResponse> call, Response<RestApiResponse> response){
                 RestApiResponse restApiResponse = response.body();
-                List<Anime> listAnime = restApiResponse.getData();
-                activity.showList(listAnime);
+                listAnime1 = restApiResponse.getData();
+                //List<Anime> listAnime2 = restApiResponse.getData();
+                //listAnime1.addAll(listAnime2);
+                activity.showList(listAnime1);
 
             }
 
@@ -54,7 +63,7 @@ public class Controller {
             public void onFailure(Call<RestApiResponse> call, Throwable throwable) {
                 Log.d("ERROR", "Api Error");
             }
-
         });
+
     }
 }
